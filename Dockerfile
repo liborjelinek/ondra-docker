@@ -1,6 +1,8 @@
-FROM ubuntu
+FROM python:3.11
 
-RUN mkdir /opt/ondra
-COPY main.py /opt/ondra/main.py
+WORKDIR /usr/src/app
+COPY . .
 
-CMD while true; do echo "This is an infinite loop"; done
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD [ "python", "-u", "./main.py" ]
